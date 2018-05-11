@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition">
+  <DataSet Name="">
+    <Query>
+      <DataSourceReference>PreSIS</DataSourceReference>
+      <DataSetParameters>
+        <DataSetParameter Name="@brandID">
+          <ReadOnly>false</ReadOnly>
+          <Nullable>false</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:DbType>Object</rd:DbType>
+        </DataSetParameter>
+      </DataSetParameters>
+      <CommandText>SELECT        MasterItem.ID, MasterItem.ItemName, MasterBrand.BrandName
+FROM            MasterItem INNER JOIN
+                         MasterBrand ON MasterItem.BrandID = MasterBrand.ID
+WHERE        (MasterItem.BrandID IN (@brandID)) AND (MasterItem.HiddenItem = 1) AND (MasterItem.StatusID = 1)</CommandText>
+    </Query>
+    <Fields>
+      <Field Name="ID">
+        <DataField>ID</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="ItemName">
+        <DataField>ItemName</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="BrandName">
+        <DataField>BrandName</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>

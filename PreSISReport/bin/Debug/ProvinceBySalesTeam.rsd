@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SharedDataSet xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/shareddatasetdefinition">
+  <DataSet Name="">
+    <Query>
+      <DataSourceReference>PreSIS</DataSourceReference>
+      <DataSetParameters>
+        <DataSetParameter Name="@areaID">
+          <ReadOnly>false</ReadOnly>
+          <Nullable>false</Nullable>
+          <OmitFromQuery>false</OmitFromQuery>
+          <rd:DbType>Object</rd:DbType>
+        </DataSetParameter>
+      </DataSetParameters>
+      <CommandText>SELECT        MasterProvince.ID, MasterProvince.ProvinceName, MasterProvince.AreaID, MasterArea.AreaName
+FROM            MasterProvince INNER JOIN
+                         MasterArea ON MasterProvince.AreaID = MasterArea.ID AND MasterProvince.TeamID = MasterArea.TeamID
+WHERE        (MasterProvince.StatusID = 1) AND (MasterProvince.AreaID IN (@areaID)) AND (MasterProvince.TeamID = 1)
+ORDER BY MasterProvince.ProvinceName</CommandText>
+    </Query>
+    <Fields>
+      <Field Name="ID">
+        <DataField>ID</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="ProvinceName">
+        <DataField>ProvinceName</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+      <Field Name="AreaID">
+        <DataField>AreaID</DataField>
+        <rd:TypeName>System.Int32</rd:TypeName>
+      </Field>
+      <Field Name="AreaName">
+        <DataField>AreaName</DataField>
+        <rd:TypeName>System.String</rd:TypeName>
+      </Field>
+    </Fields>
+  </DataSet>
+</SharedDataSet>
