@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+<Report xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:cl="http://schemas.microsoft.com/sqlserver/reporting/2010/01/componentdefinition" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/reportdefinition">
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
     <DataSource Name="PreSIS">
@@ -25,14 +25,13 @@
         </QueryParameters>
         <CommandText>SELECT        ContractMonthlyOutletBonus.DateBegin, ContractMonthlyOutletBonus.DateEnd, ContractMonthlyOutletBonus.Annex, ContractMonthlyOutletBonus.Year, 
                          ContractMonthlyOutletBonus.Month, ContractMonthlyOutletBonus.DistributorID, ContractMonthlyOutletBonus.DragonDistributorName, 
-                         ContractMonthlyOutletBonus.cdStore, ContractMonthlyOutletBonus.DragonOutletName, ContractMonthlyOutletBonus.Channel, 
-                         ContractMonthlyOutletBonus.Target, ContractMonthlyOutletBonus.ActualTarget, ContractMonthlyOutletBonus.Result, 
-                         ContractMonthlyOutletBonus.ApplyBonus, ContractMonthlyOutletBonus.ExtraBonus, ContractMonthlyOutletBonus.ActualBonus, vItem.ItemName, 
-                         ContractMonthlyOutletSalesIn.ItemID, vItem.BrandName, ContractMonthlyOutletSalesIn.SourceData, ContractMonthlyOutletSalesIn.ActualSalesIn, 
-                         vProvinceBySalesTeam.RegionName, vProvinceBySalesTeam.AreaName, vProvinceBySalesTeam.ProvinceName, ContractMonthlySignature.FullNameVN, 
-                         ContractMonthlyOutlet.BankAccount, ContractMonthlyOutlet.BankName, ContractMonthlyOutletSalesIn.ApplyFee, ContractMonthlyOutletSalesIn.ExtraFee, 
-                         ContractMonthlyOutletSalesIn.ProductGroupCode, ContractMonthlyOutletSalesIn.ProvinceID, ContractMonthlyOutlet.OwnerOutlet, 
-                         ContractMonthlyOutlet.PhoneNumber
+                         ContractMonthlyOutletBonus.cdStore, ContractMonthlyOutletBonus.DragonOutletName, ContractMonthlyOutletBonus.Channel, ContractMonthlyOutletBonus.Target, 
+                         ContractMonthlyOutletBonus.ActualTarget, ContractMonthlyOutletBonus.Result, ContractMonthlyOutletBonus.ApplyBonus, ContractMonthlyOutletBonus.ExtraBonus, 
+                         ContractMonthlyOutletBonus.ActualBonus, vItem.ItemName, ContractMonthlyOutletSalesIn.ItemID, vItem.BrandName, ContractMonthlyOutletSalesIn.SourceData, 
+                         ContractMonthlyOutletSalesIn.ActualSalesIn, vProvinceBySalesTeam.RegionName, vProvinceBySalesTeam.AreaName, vProvinceBySalesTeam.ProvinceName, 
+                         ContractMonthlySignature.FullNameVN, ContractMonthlyOutlet.BankAccount, ContractMonthlyOutlet.BankName, ContractMonthlyOutletSalesIn.ApplyFee, 
+                         ContractMonthlyOutletSalesIn.ExtraFee, ContractMonthlyOutletSalesIn.ProductGroupCode, ContractMonthlyOutletSalesIn.ProvinceID, 
+                         ContractMonthlyOutlet.OwnerOutlet, ContractMonthlyOutlet.PhoneNumber
 FROM            ContractMonthlyOutletSalesIn INNER JOIN
                          ContractMonthlyOutletBonus ON ContractMonthlyOutletSalesIn.Year = ContractMonthlyOutletBonus.Year AND 
                          ContractMonthlyOutletSalesIn.Month = ContractMonthlyOutletBonus.Month AND 
@@ -43,8 +42,8 @@ FROM            ContractMonthlyOutletSalesIn INNER JOIN
                          ContractMonthlyOutletBonus.Year = ContractMonthlySignature.Year AND ContractMonthlyOutletBonus.Month = ContractMonthlySignature.Month INNER JOIN
                          ContractMonthlyOutlet ON ContractMonthlyOutletBonus.cdStore = ContractMonthlyOutlet.OutletID AND 
                          ContractMonthlyOutletBonus.Year = ContractMonthlyOutlet.Year AND ContractMonthlyOutletBonus.Month = ContractMonthlyOutlet.Month
-WHERE        (ContractMonthlyOutletSalesIn.Year = @year) AND (ContractMonthlyOutletSalesIn.Month = @month) AND 
-                         (ContractMonthlyOutletSalesIn.ProvinceID = @provinceID) AND (ContractMonthlyOutletSalesIn.Qualify = 0)</CommandText>
+WHERE        (ContractMonthlyOutletSalesIn.Year = @year) AND (ContractMonthlyOutletSalesIn.Month = @month) AND (ContractMonthlyOutletSalesIn.ProvinceID = @provinceID) 
+                         AND (ContractMonthlyOutletSalesIn.Qualify = 0)</CommandText>
       </Query>
       <Fields>
         <Field Name="Year">
@@ -6353,39 +6352,6 @@ WHERE        (ContractMonthlyOutletSalesIn.Year = @year) AND (ContractMonthlyOut
       </ValidValues>
     </ReportParameter>
   </ReportParameters>
-  <ReportParametersLayout>
-    <GridLayoutDefinition>
-      <NumberOfColumns>2</NumberOfColumns>
-      <NumberOfRows>3</NumberOfRows>
-      <CellDefinitions>
-        <CellDefinition>
-          <ColumnIndex>0</ColumnIndex>
-          <RowIndex>0</RowIndex>
-          <ParameterName>regionID</ParameterName>
-        </CellDefinition>
-        <CellDefinition>
-          <ColumnIndex>1</ColumnIndex>
-          <RowIndex>0</RowIndex>
-          <ParameterName>year</ParameterName>
-        </CellDefinition>
-        <CellDefinition>
-          <ColumnIndex>0</ColumnIndex>
-          <RowIndex>1</RowIndex>
-          <ParameterName>areaID</ParameterName>
-        </CellDefinition>
-        <CellDefinition>
-          <ColumnIndex>1</ColumnIndex>
-          <RowIndex>1</RowIndex>
-          <ParameterName>month</ParameterName>
-        </CellDefinition>
-        <CellDefinition>
-          <ColumnIndex>0</ColumnIndex>
-          <RowIndex>2</RowIndex>
-          <ParameterName>provinceID</ParameterName>
-        </CellDefinition>
-      </CellDefinitions>
-    </GridLayoutDefinition>
-  </ReportParametersLayout>
   <Language>en-US</Language>
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>

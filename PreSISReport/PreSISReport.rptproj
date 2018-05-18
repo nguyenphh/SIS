@@ -72,6 +72,7 @@
     <Report Include="CON-04 ContractFeeSummary.rdl" />
     <Report Include="CON-05 ContractRate.rdl" />
     <Report Include="CON-06 ContractTarget.rdl" />
+    <Report Include="CON-08 StockReview.rdl" />
     <Report Include="DIS-01 YearlyActualStockOfDis.rdl" />
     <Report Include="DIS-02 YearNetRevenueAfterDiscountsOfDis.rdl" />
     <Report Include="DIS-03 KPITrackingSummary.rdl" />
@@ -93,7 +94,9 @@
     <Report Include="OUT-02 DailyAverageSalesOutReport.rdl" />
     <Report Include="OUT-03 DailyOOSReport.rdl" />
     <Report Include="OUT-03 DailyOOSReport_HI.rdl" />
+    <Report Include="OUT-03 DailyOOSReport_HITest.rdl" />
     <Report Include="OUT-03 DailyOOSReport_TB.rdl" />
+    <Report Include="OUT-03 DailyOOSReport_TBTest.rdl" />
     <Report Include="OUT-04 MonthlySalesOutData.rdl" />
     <Report Include="OUT-05 MonthlySalesOutByProvince.rdl" />
     <Report Include="OUT-06 MonthlySalesOutByOutlet.rdl" />

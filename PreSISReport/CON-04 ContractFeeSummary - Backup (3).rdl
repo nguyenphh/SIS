@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+<Report xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:cl="http://schemas.microsoft.com/sqlserver/reporting/2010/01/componentdefinition" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2010/01/reportdefinition">
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
     <DataSource Name="PreSIS">
@@ -23,7 +23,7 @@
         <CommandText>SELECT        ContractMonthlyOutletBonus.Year, ContractMonthlyOutletBonus.Month, vProvinceBySalesTeam.RegionName, vProvinceBySalesTeam.AreaName, 
                          vProvinceBySalesTeam.ProvinceName, ContractMonthlyOutletBonus.cdStore, ContractMonthlyOutletBonus.DragonOutletName, 
                          ContractMonthlyOutletBonus.ActualBonus, vItem.BrandName, ContractMonthlyOutletSalesIn.ItemID, ContractMonthlyOutletSalesIn.ActualSalesIn, 
-                         ContractMonthlyOutletBonus.Channel, ContractMonthlyOutletBonus.DistributorID, ContractMonthlyOutletBonus.DragonDistributorName
+                         ContractMonthlyOutletBonus.Channel
 FROM            ContractMonthlyOutletBonus INNER JOIN
                          vProvinceBySalesTeam ON ContractMonthlyOutletBonus.ProvinceID = vProvinceBySalesTeam.ProvinceID INNER JOIN
                          ContractMonthlyOutletSalesIn ON ContractMonthlyOutletBonus.Year = ContractMonthlyOutletSalesIn.Year AND 
@@ -81,14 +81,6 @@ WHERE        (ContractMonthlyOutletBonus.Year = @year) AND (ContractMonthlyOutle
           <DataField>Channel</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="DistributorID">
-          <DataField>DistributorID</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
-        <Field Name="DragonDistributorName">
-          <DataField>DragonDistributorName</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
-        </Field>
       </Fields>
     </DataSet>
     <DataSet Name="MonthDS">
@@ -122,7 +114,7 @@ WHERE        (ContractMonthlyOutletBonus.Year = @year) AND (ContractMonthlyOutle
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>10.4375in</Width>
+                  <Width>7.4375in</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -137,7 +129,7 @@ WHERE        (ContractMonthlyOutletBonus.Year = @year) AND (ContractMonthlyOutle
                               <TablixBody>
                                 <TablixColumns>
                                   <TablixColumn>
-                                    <Width>10.4375in</Width>
+                                    <Width>7.4375in</Width>
                                   </TablixColumn>
                                 </TablixColumns>
                                 <TablixRows>
@@ -182,7 +174,7 @@ WHERE        (ContractMonthlyOutletBonus.Year = @year) AND (ContractMonthlyOutle
                                                               <PaddingBottom>2pt</PaddingBottom>
                                                             </Style>
                                                           </Textbox>
-                                                          <ColSpan>7</ColSpan>
+                                                          <ColSpan>5</ColSpan>
                                                           <RowSpan>4</RowSpan>
                                                         </CellContents>
                                                       </TablixCornerCell>
@@ -190,6 +182,11 @@ WHERE        (ContractMonthlyOutletBonus.Year = @year) AND (ContractMonthlyOutle
                                                       <TablixCornerCell />
                                                       <TablixCornerCell />
                                                       <TablixCornerCell />
+                                                    </TablixCornerRow>
+                                                    <TablixCornerRow>
+                                                      <TablixCornerCell />
+                                                      <TablixCornerCell />
+                                                      <TablixCornerCell />
                                                       <TablixCornerCell />
                                                       <TablixCornerCell />
                                                     </TablixCornerRow>
@@ -199,21 +196,8 @@ WHERE        (ContractMonthlyOutletBonus.Year = @year) AND (ContractMonthlyOutle
                                                       <TablixCornerCell />
                                                       <TablixCornerCell />
                                                       <TablixCornerCell />
-                                                      <TablixCornerCell />
-                                                      <TablixCornerCell />
                                                     </TablixCornerRow>
                                                     <TablixCornerRow>
-                                                      <TablixCornerCell />
-                                                      <TablixCornerCell />
-                                                      <TablixCornerCell />
-                                                      <TablixCornerCell />
-                                                      <TablixCornerCell />
-                                                      <TablixCornerCell />
-                                                      <TablixCornerCell />
-                                                    </TablixCornerRow>
-                                                    <TablixCornerRow>
-                                                      <TablixCornerCell />
-                                                      <TablixCornerCell />
                                                       <TablixCornerCell />
                                                       <TablixCornerCell />
                                                       <TablixCornerCell />
@@ -571,7 +555,7 @@ WHERE        (ContractMonthlyOutletBonus.Year = @year) AND (ContractMonthlyOutle
                                                           </Group>
                                                           <SortExpressions>
                                                             <SortExpression>
-                                                              <Value>=Fields!DistributorID.Value</Value>
+                                                              <Value>=Fields!DragonOutletName.Value</Value>
                                                             </SortExpression>
                                                             <SortExpression>
                                                               <Value>=Fields!cdStore.Value</Value>
@@ -580,32 +564,32 @@ WHERE        (ContractMonthlyOutletBonus.Year = @year) AND (ContractMonthlyOutle
                                                           <TablixHeader>
                                                             <Size>1in</Size>
                                                             <CellContents>
-                                                              <Textbox Name="DistributorID1">
+                                                              <Textbox Name="cdStore">
                                                                 <CanGrow>true</CanGrow>
                                                                 <KeepTogether>true</KeepTogether>
                                                                 <Paragraphs>
                                                                   <Paragraph>
                                                                     <TextRuns>
                                                                       <TextRun>
-                                                                        <Value>=Fields!DistributorID.Value</Value>
+                                                                        <Value>=Fields!cdStore.Value</Value>
                                                                         <Style>
                                                                           <FontFamily>Tahoma</FontFamily>
                                                                         </Style>
                                                                       </TextRun>
                                                                     </TextRuns>
                                                                     <Style>
-                                                                      <TextAlign>Left</TextAlign>
+                                                                      <TextAlign>Center</TextAlign>
                                                                     </Style>
                                                                   </Paragraph>
                                                                 </Paragraphs>
-                                                                <rd:DefaultName>DistributorID1</rd:DefaultName>
+                                                                <rd:DefaultName>cdStore</rd:DefaultName>
                                                                 <Style>
                                                                   <Border>
                                                                     <Color>DimGray</Color>
                                                                     <Style>Solid</Style>
                                                                   </Border>
                                                                   <BackgroundColor>LightSteelBlue</BackgroundColor>
-                                                                  <PaddingLeft>6pt</PaddingLeft>
+                                                                  <PaddingLeft>2pt</PaddingLeft>
                                                                   <PaddingRight>2pt</PaddingRight>
                                                                   <PaddingTop>2pt</PaddingTop>
                                                                   <PaddingBottom>2pt</PaddingBottom>
@@ -615,34 +599,42 @@ WHERE        (ContractMonthlyOutletBonus.Year = @year) AND (ContractMonthlyOutle
                                                           </TablixHeader>
                                                           <TablixMembers>
                                                             <TablixMember>
+                                                              <Group Name="matrix1_DragonOutletName">
+                                                                <GroupExpressions>
+                                                                  <GroupExpression>=Fields!DragonOutletName.Value</GroupExpression>
+                                                                </GroupExpressions>
+                                                              </Group>
+                                                              <SortExpressions>
+                                                                <SortExpression>
+                                                                  <Value>=Fields!DragonOutletName.Value</Value>
+                                                                </SortExpression>
+                                                              </SortExpressions>
                                                               <TablixHeader>
-                                                                <Size>2in</Size>
+                                                                <Size>2.4375in</Size>
                                                                 <CellContents>
-                                                                  <Textbox Name="DragonDistributorName">
+                                                                  <Textbox Name="DragonOutletName">
                                                                     <CanGrow>true</CanGrow>
                                                                     <KeepTogether>true</KeepTogether>
                                                                     <Paragraphs>
                                                                       <Paragraph>
                                                                         <TextRuns>
                                                                           <TextRun>
-                                                                            <Value>=Fields!DragonDistributorName.Value</Value>
+                                                                            <Value>=Fields!DragonOutletName.Value</Value>
                                                                             <Style>
                                                                               <FontFamily>Tahoma</FontFamily>
                                                                             </Style>
                                                                           </TextRun>
                                                                         </TextRuns>
-                                                                        <Style>
-                                                                          <TextAlign>Left</TextAlign>
-                                                                        </Style>
+                                                                        <Style />
                                                                       </Paragraph>
                                                                     </Paragraphs>
-                                                                    <rd:DefaultName>DragonDistributorName</rd:DefaultName>
+                                                                    <rd:DefaultName>DragonOutletName</rd:DefaultName>
                                                                     <Style>
                                                                       <Border>
                                                                         <Color>DimGray</Color>
                                                                         <Style>Solid</Style>
                                                                       </Border>
-                                                                      <BackgroundColor>LightSteelBlue</BackgroundColor>
+                                                                      <BackgroundColor>#cad8ea</BackgroundColor>
                                                                       <PaddingLeft>2pt</PaddingLeft>
                                                                       <PaddingRight>2pt</PaddingRight>
                                                                       <PaddingTop>2pt</PaddingTop>
@@ -653,35 +645,45 @@ WHERE        (ContractMonthlyOutletBonus.Year = @year) AND (ContractMonthlyOutle
                                                               </TablixHeader>
                                                               <TablixMembers>
                                                                 <TablixMember>
+                                                                  <Group Name="matrix1_Channel">
+                                                                    <GroupExpressions>
+                                                                      <GroupExpression>=Fields!Channel.Value</GroupExpression>
+                                                                    </GroupExpressions>
+                                                                  </Group>
+                                                                  <SortExpressions>
+                                                                    <SortExpression>
+                                                                      <Value>=Fields!Channel.Value</Value>
+                                                                    </SortExpression>
+                                                                  </SortExpressions>
                                                                   <TablixHeader>
                                                                     <Size>1in</Size>
                                                                     <CellContents>
-                                                                      <Textbox Name="cdStore">
+                                                                      <Textbox Name="Channel">
                                                                         <CanGrow>true</CanGrow>
                                                                         <KeepTogether>true</KeepTogether>
                                                                         <Paragraphs>
                                                                           <Paragraph>
                                                                             <TextRuns>
                                                                               <TextRun>
-                                                                                <Value>=Fields!cdStore.Value</Value>
+                                                                                <Value>=Fields!Channel.Value</Value>
                                                                                 <Style>
                                                                                   <FontFamily>Tahoma</FontFamily>
                                                                                 </Style>
                                                                               </TextRun>
                                                                             </TextRuns>
                                                                             <Style>
-                                                                              <TextAlign>Left</TextAlign>
+                                                                              <TextAlign>Center</TextAlign>
                                                                             </Style>
                                                                           </Paragraph>
                                                                         </Paragraphs>
-                                                                        <rd:DefaultName>cdStore</rd:DefaultName>
+                                                                        <rd:DefaultName>Channel</rd:DefaultName>
                                                                         <Style>
                                                                           <Border>
                                                                             <Color>DimGray</Color>
                                                                             <Style>Solid</Style>
                                                                           </Border>
-                                                                          <BackgroundColor>LightSteelBlue</BackgroundColor>
-                                                                          <PaddingLeft>6pt</PaddingLeft>
+                                                                          <BackgroundColor>#cad8ea</BackgroundColor>
+                                                                          <PaddingLeft>2pt</PaddingLeft>
                                                                           <PaddingRight>2pt</PaddingRight>
                                                                           <PaddingTop>2pt</PaddingTop>
                                                                           <PaddingBottom>2pt</PaddingBottom>
@@ -691,38 +693,37 @@ WHERE        (ContractMonthlyOutletBonus.Year = @year) AND (ContractMonthlyOutle
                                                                   </TablixHeader>
                                                                   <TablixMembers>
                                                                     <TablixMember>
-                                                                      <Group Name="matrix1_DragonOutletName">
+                                                                      <Group Name="matrix1_ActualBonus">
                                                                         <GroupExpressions>
-                                                                          <GroupExpression>=Fields!DragonOutletName.Value</GroupExpression>
+                                                                          <GroupExpression>=Fields!ActualBonus.Value</GroupExpression>
                                                                         </GroupExpressions>
                                                                       </Group>
                                                                       <SortExpressions>
                                                                         <SortExpression>
-                                                                          <Value>=Fields!DragonOutletName.Value</Value>
+                                                                          <Value>=Fields!ActualBonus.Value</Value>
                                                                         </SortExpression>
                                                                       </SortExpressions>
                                                                       <TablixHeader>
-                                                                        <Size>2.4375in</Size>
+                                                                        <Size>1in</Size>
                                                                         <CellContents>
-                                                                          <Textbox Name="DragonOutletName">
+                                                                          <Textbox Name="ActualBonus">
                                                                             <CanGrow>true</CanGrow>
                                                                             <KeepTogether>true</KeepTogether>
                                                                             <Paragraphs>
                                                                               <Paragraph>
                                                                                 <TextRuns>
                                                                                   <TextRun>
-                                                                                    <Value>=Fields!DragonOutletName.Value</Value>
+                                                                                    <Value>=Fields!ActualBonus.Value</Value>
                                                                                     <Style>
                                                                                       <FontFamily>Tahoma</FontFamily>
+                                                                                      <Format>#,0;(#,0);'-'</Format>
                                                                                     </Style>
                                                                                   </TextRun>
                                                                                 </TextRuns>
-                                                                                <Style>
-                                                                                  <TextAlign>Left</TextAlign>
-                                                                                </Style>
+                                                                                <Style />
                                                                               </Paragraph>
                                                                             </Paragraphs>
-                                                                            <rd:DefaultName>DragonOutletName</rd:DefaultName>
+                                                                            <rd:DefaultName>ActualBonus</rd:DefaultName>
                                                                             <Style>
                                                                               <Border>
                                                                                 <Color>DimGray</Color>
@@ -737,113 +738,14 @@ WHERE        (ContractMonthlyOutletBonus.Year = @year) AND (ContractMonthlyOutle
                                                                           </Textbox>
                                                                         </CellContents>
                                                                       </TablixHeader>
-                                                                      <TablixMembers>
-                                                                        <TablixMember>
-                                                                          <Group Name="matrix1_Channel">
-                                                                            <GroupExpressions>
-                                                                              <GroupExpression>=Fields!Channel.Value</GroupExpression>
-                                                                            </GroupExpressions>
-                                                                          </Group>
-                                                                          <SortExpressions>
-                                                                            <SortExpression>
-                                                                              <Value>=Fields!Channel.Value</Value>
-                                                                            </SortExpression>
-                                                                          </SortExpressions>
-                                                                          <TablixHeader>
-                                                                            <Size>1in</Size>
-                                                                            <CellContents>
-                                                                              <Textbox Name="Channel">
-                                                                                <CanGrow>true</CanGrow>
-                                                                                <KeepTogether>true</KeepTogether>
-                                                                                <Paragraphs>
-                                                                                  <Paragraph>
-                                                                                    <TextRuns>
-                                                                                      <TextRun>
-                                                                                        <Value>=Fields!Channel.Value</Value>
-                                                                                        <Style>
-                                                                                          <FontFamily>Tahoma</FontFamily>
-                                                                                        </Style>
-                                                                                      </TextRun>
-                                                                                    </TextRuns>
-                                                                                    <Style>
-                                                                                      <TextAlign>Center</TextAlign>
-                                                                                    </Style>
-                                                                                  </Paragraph>
-                                                                                </Paragraphs>
-                                                                                <rd:DefaultName>Channel</rd:DefaultName>
-                                                                                <Style>
-                                                                                  <Border>
-                                                                                    <Color>DimGray</Color>
-                                                                                    <Style>Solid</Style>
-                                                                                  </Border>
-                                                                                  <BackgroundColor>#cad8ea</BackgroundColor>
-                                                                                  <PaddingLeft>2pt</PaddingLeft>
-                                                                                  <PaddingRight>2pt</PaddingRight>
-                                                                                  <PaddingTop>2pt</PaddingTop>
-                                                                                  <PaddingBottom>2pt</PaddingBottom>
-                                                                                </Style>
-                                                                              </Textbox>
-                                                                            </CellContents>
-                                                                          </TablixHeader>
-                                                                          <TablixMembers>
-                                                                            <TablixMember>
-                                                                              <Group Name="matrix1_ActualBonus">
-                                                                                <GroupExpressions>
-                                                                                  <GroupExpression>=Fields!ActualBonus.Value</GroupExpression>
-                                                                                </GroupExpressions>
-                                                                              </Group>
-                                                                              <SortExpressions>
-                                                                                <SortExpression>
-                                                                                  <Value>=Fields!ActualBonus.Value</Value>
-                                                                                </SortExpression>
-                                                                              </SortExpressions>
-                                                                              <TablixHeader>
-                                                                                <Size>1in</Size>
-                                                                                <CellContents>
-                                                                                  <Textbox Name="ActualBonus">
-                                                                                    <CanGrow>true</CanGrow>
-                                                                                    <KeepTogether>true</KeepTogether>
-                                                                                    <Paragraphs>
-                                                                                      <Paragraph>
-                                                                                        <TextRuns>
-                                                                                          <TextRun>
-                                                                                            <Value>=Fields!ActualBonus.Value</Value>
-                                                                                            <Style>
-                                                                                              <FontFamily>Tahoma</FontFamily>
-                                                                                              <Format>#,0;(#,0);'-'</Format>
-                                                                                            </Style>
-                                                                                          </TextRun>
-                                                                                        </TextRuns>
-                                                                                        <Style />
-                                                                                      </Paragraph>
-                                                                                    </Paragraphs>
-                                                                                    <rd:DefaultName>ActualBonus</rd:DefaultName>
-                                                                                    <Style>
-                                                                                      <Border>
-                                                                                        <Color>DimGray</Color>
-                                                                                        <Style>Solid</Style>
-                                                                                      </Border>
-                                                                                      <BackgroundColor>#cad8ea</BackgroundColor>
-                                                                                      <PaddingLeft>2pt</PaddingLeft>
-                                                                                      <PaddingRight>2pt</PaddingRight>
-                                                                                      <PaddingTop>2pt</PaddingTop>
-                                                                                      <PaddingBottom>2pt</PaddingBottom>
-                                                                                    </Style>
-                                                                                  </Textbox>
-                                                                                </CellContents>
-                                                                              </TablixHeader>
-                                                                              <DataElementOutput>Output</DataElementOutput>
-                                                                              <KeepTogether>true</KeepTogether>
-                                                                            </TablixMember>
-                                                                          </TablixMembers>
-                                                                          <DataElementOutput>Output</DataElementOutput>
-                                                                        </TablixMember>
-                                                                      </TablixMembers>
                                                                       <DataElementOutput>Output</DataElementOutput>
+                                                                      <KeepTogether>true</KeepTogether>
                                                                     </TablixMember>
                                                                   </TablixMembers>
+                                                                  <DataElementOutput>Output</DataElementOutput>
                                                                 </TablixMember>
                                                               </TablixMembers>
+                                                              <DataElementOutput>Output</DataElementOutput>
                                                             </TablixMember>
                                                           </TablixMembers>
                                                           <DataElementOutput>Output</DataElementOutput>
@@ -893,7 +795,7 @@ WHERE        (ContractMonthlyOutletBonus.Year = @year) AND (ContractMonthlyOutle
                                                           <TablixHeader>
                                                             <Size>1in</Size>
                                                             <CellContents>
-                                                              <Textbox Name="Textbox13">
+                                                              <Textbox Name="Textbox5">
                                                                 <CanGrow>true</CanGrow>
                                                                 <KeepTogether>true</KeepTogether>
                                                                 <Paragraphs>
@@ -908,11 +810,11 @@ WHERE        (ContractMonthlyOutletBonus.Year = @year) AND (ContractMonthlyOutle
                                                                       </TextRun>
                                                                     </TextRuns>
                                                                     <Style>
-                                                                      <TextAlign>Left</TextAlign>
+                                                                      <TextAlign>Center</TextAlign>
                                                                     </Style>
                                                                   </Paragraph>
                                                                 </Paragraphs>
-                                                                <rd:DefaultName>Textbox13</rd:DefaultName>
+                                                                <rd:DefaultName>Textbox5</rd:DefaultName>
                                                                 <Style>
                                                                   <Border>
                                                                     <Color>DimGray</Color>
@@ -930,16 +832,16 @@ WHERE        (ContractMonthlyOutletBonus.Year = @year) AND (ContractMonthlyOutle
                                                           <TablixMembers>
                                                             <TablixMember>
                                                               <TablixHeader>
-                                                                <Size>2in</Size>
+                                                                <Size>2.4375in</Size>
                                                                 <CellContents>
-                                                                  <Textbox Name="Textbox12">
+                                                                  <Textbox Name="cdStore1">
                                                                     <CanGrow>true</CanGrow>
                                                                     <KeepTogether>true</KeepTogether>
                                                                     <Paragraphs>
                                                                       <Paragraph>
                                                                         <TextRuns>
                                                                           <TextRun>
-                                                                            <Value />
+                                                                            <Value>=CountDistinct(Fields!cdStore.Value)</Value>
                                                                             <Style>
                                                                               <FontFamily>Tahoma</FontFamily>
                                                                               <FontWeight>Bold</FontWeight>
@@ -947,17 +849,17 @@ WHERE        (ContractMonthlyOutletBonus.Year = @year) AND (ContractMonthlyOutle
                                                                           </TextRun>
                                                                         </TextRuns>
                                                                         <Style>
-                                                                          <TextAlign>Left</TextAlign>
+                                                                          <TextAlign>Center</TextAlign>
                                                                         </Style>
                                                                       </Paragraph>
                                                                     </Paragraphs>
-                                                                    <rd:DefaultName>Textbox12</rd:DefaultName>
+                                                                    <rd:DefaultName>cdStore1</rd:DefaultName>
                                                                     <Style>
                                                                       <Border>
                                                                         <Color>DimGray</Color>
                                                                         <Style>Solid</Style>
                                                                       </Border>
-                                                                      <BackgroundColor>LightSteelBlue</BackgroundColor>
+                                                                      <BackgroundColor>#cad8ea</BackgroundColor>
                                                                       <PaddingLeft>2pt</PaddingLeft>
                                                                       <PaddingRight>2pt</PaddingRight>
                                                                       <PaddingTop>2pt</PaddingTop>
@@ -971,7 +873,7 @@ WHERE        (ContractMonthlyOutletBonus.Year = @year) AND (ContractMonthlyOutle
                                                                   <TablixHeader>
                                                                     <Size>1in</Size>
                                                                     <CellContents>
-                                                                      <Textbox Name="Textbox5">
+                                                                      <Textbox Name="Textbox7">
                                                                         <CanGrow>true</CanGrow>
                                                                         <KeepTogether>true</KeepTogether>
                                                                         <Paragraphs>
@@ -986,17 +888,17 @@ WHERE        (ContractMonthlyOutletBonus.Year = @year) AND (ContractMonthlyOutle
                                                                               </TextRun>
                                                                             </TextRuns>
                                                                             <Style>
-                                                                              <TextAlign>Left</TextAlign>
+                                                                              <TextAlign>Center</TextAlign>
                                                                             </Style>
                                                                           </Paragraph>
                                                                         </Paragraphs>
-                                                                        <rd:DefaultName>Textbox5</rd:DefaultName>
+                                                                        <rd:DefaultName>Textbox7</rd:DefaultName>
                                                                         <Style>
                                                                           <Border>
                                                                             <Color>DimGray</Color>
                                                                             <Style>Solid</Style>
                                                                           </Border>
-                                                                          <BackgroundColor>LightSteelBlue</BackgroundColor>
+                                                                          <BackgroundColor>#cad8ea</BackgroundColor>
                                                                           <PaddingLeft>2pt</PaddingLeft>
                                                                           <PaddingRight>2pt</PaddingRight>
                                                                           <PaddingTop>2pt</PaddingTop>
@@ -1008,28 +910,26 @@ WHERE        (ContractMonthlyOutletBonus.Year = @year) AND (ContractMonthlyOutle
                                                                   <TablixMembers>
                                                                     <TablixMember>
                                                                       <TablixHeader>
-                                                                        <Size>2.4375in</Size>
+                                                                        <Size>1in</Size>
                                                                         <CellContents>
-                                                                          <Textbox Name="cdStore1">
+                                                                          <Textbox Name="Textbox8">
                                                                             <CanGrow>true</CanGrow>
                                                                             <KeepTogether>true</KeepTogether>
                                                                             <Paragraphs>
                                                                               <Paragraph>
                                                                                 <TextRuns>
                                                                                   <TextRun>
-                                                                                    <Value>=CountDistinct(Fields!cdStore.Value)</Value>
+                                                                                    <Value />
                                                                                     <Style>
                                                                                       <FontFamily>Tahoma</FontFamily>
                                                                                       <FontWeight>Bold</FontWeight>
                                                                                     </Style>
                                                                                   </TextRun>
                                                                                 </TextRuns>
-                                                                                <Style>
-                                                                                  <TextAlign>Center</TextAlign>
-                                                                                </Style>
+                                                                                <Style />
                                                                               </Paragraph>
                                                                             </Paragraphs>
-                                                                            <rd:DefaultName>cdStore1</rd:DefaultName>
+                                                                            <rd:DefaultName>Textbox8</rd:DefaultName>
                                                                             <Style>
                                                                               <Border>
                                                                                 <Color>DimGray</Color>
@@ -1044,86 +944,6 @@ WHERE        (ContractMonthlyOutletBonus.Year = @year) AND (ContractMonthlyOutle
                                                                           </Textbox>
                                                                         </CellContents>
                                                                       </TablixHeader>
-                                                                      <TablixMembers>
-                                                                        <TablixMember>
-                                                                          <TablixHeader>
-                                                                            <Size>1in</Size>
-                                                                            <CellContents>
-                                                                              <Textbox Name="Textbox7">
-                                                                                <CanGrow>true</CanGrow>
-                                                                                <KeepTogether>true</KeepTogether>
-                                                                                <Paragraphs>
-                                                                                  <Paragraph>
-                                                                                    <TextRuns>
-                                                                                      <TextRun>
-                                                                                        <Value />
-                                                                                        <Style>
-                                                                                          <FontFamily>Tahoma</FontFamily>
-                                                                                          <FontWeight>Bold</FontWeight>
-                                                                                        </Style>
-                                                                                      </TextRun>
-                                                                                    </TextRuns>
-                                                                                    <Style>
-                                                                                      <TextAlign>Center</TextAlign>
-                                                                                    </Style>
-                                                                                  </Paragraph>
-                                                                                </Paragraphs>
-                                                                                <rd:DefaultName>Textbox7</rd:DefaultName>
-                                                                                <Style>
-                                                                                  <Border>
-                                                                                    <Color>DimGray</Color>
-                                                                                    <Style>Solid</Style>
-                                                                                  </Border>
-                                                                                  <BackgroundColor>#cad8ea</BackgroundColor>
-                                                                                  <PaddingLeft>2pt</PaddingLeft>
-                                                                                  <PaddingRight>2pt</PaddingRight>
-                                                                                  <PaddingTop>2pt</PaddingTop>
-                                                                                  <PaddingBottom>2pt</PaddingBottom>
-                                                                                </Style>
-                                                                              </Textbox>
-                                                                            </CellContents>
-                                                                          </TablixHeader>
-                                                                          <TablixMembers>
-                                                                            <TablixMember>
-                                                                              <TablixHeader>
-                                                                                <Size>1in</Size>
-                                                                                <CellContents>
-                                                                                  <Textbox Name="Textbox15">
-                                                                                    <CanGrow>true</CanGrow>
-                                                                                    <KeepTogether>true</KeepTogether>
-                                                                                    <Paragraphs>
-                                                                                      <Paragraph>
-                                                                                        <TextRuns>
-                                                                                          <TextRun>
-                                                                                            <Value />
-                                                                                            <Style>
-                                                                                              <FontFamily>Tahoma</FontFamily>
-                                                                                              <FontWeight>Bold</FontWeight>
-                                                                                            </Style>
-                                                                                          </TextRun>
-                                                                                        </TextRuns>
-                                                                                        <Style />
-                                                                                      </Paragraph>
-                                                                                    </Paragraphs>
-                                                                                    <rd:DefaultName>Textbox15</rd:DefaultName>
-                                                                                    <Style>
-                                                                                      <Border>
-                                                                                        <Color>DimGray</Color>
-                                                                                        <Style>Solid</Style>
-                                                                                      </Border>
-                                                                                      <BackgroundColor>#cad8ea</BackgroundColor>
-                                                                                      <PaddingLeft>2pt</PaddingLeft>
-                                                                                      <PaddingRight>2pt</PaddingRight>
-                                                                                      <PaddingTop>2pt</PaddingTop>
-                                                                                      <PaddingBottom>2pt</PaddingBottom>
-                                                                                    </Style>
-                                                                                  </Textbox>
-                                                                                </CellContents>
-                                                                              </TablixHeader>
-                                                                            </TablixMember>
-                                                                          </TablixMembers>
-                                                                        </TablixMember>
-                                                                      </TablixMembers>
                                                                     </TablixMember>
                                                                   </TablixMembers>
                                                                 </TablixMember>
@@ -1142,7 +962,7 @@ WHERE        (ContractMonthlyOutletBonus.Year = @year) AND (ContractMonthlyOutle
                                                 <PageName>=Fields!RegionName.Value+"-"+Fields!AreaName.Value</PageName>
                                                 <Top>0.5in</Top>
                                                 <Height>1.3in</Height>
-                                                <Width>10.4375in</Width>
+                                                <Width>7.4375in</Width>
                                                 <Style />
                                               </Tablix>
                                               <Textbox Name="AreaName">
@@ -1215,7 +1035,7 @@ WHERE        (ContractMonthlyOutletBonus.Year = @year) AND (ContractMonthlyOutle
                               </PageBreak>
                               <Top>0.5in</Top>
                               <Height>1.8in</Height>
-                              <Width>10.4375in</Width>
+                              <Width>7.4375in</Width>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>12pt</FontSize>
@@ -1291,7 +1111,7 @@ WHERE        (ContractMonthlyOutletBonus.Year = @year) AND (ContractMonthlyOutle
             </PageBreak>
             <Top>0.33in</Top>
             <Height>2.3in</Height>
-            <Width>10.4375in</Width>
+            <Width>7.4375in</Width>
             <Style>
               <FontFamily>Tahoma</FontFamily>
               <FontSize>14pt</FontSize>
@@ -1330,7 +1150,7 @@ WHERE        (ContractMonthlyOutletBonus.Year = @year) AND (ContractMonthlyOutle
         <Height>2.63in</Height>
         <Style />
       </Body>
-      <Width>10.4375in</Width>
+      <Width>7.4375in</Width>
       <Page>
         <LeftMargin>1in</LeftMargin>
         <RightMargin>1in</RightMargin>
@@ -1374,24 +1194,6 @@ WHERE        (ContractMonthlyOutletBonus.Year = @year) AND (ContractMonthlyOutle
       </ValidValues>
     </ReportParameter>
   </ReportParameters>
-  <ReportParametersLayout>
-    <GridLayoutDefinition>
-      <NumberOfColumns>2</NumberOfColumns>
-      <NumberOfRows>1</NumberOfRows>
-      <CellDefinitions>
-        <CellDefinition>
-          <ColumnIndex>0</ColumnIndex>
-          <RowIndex>0</RowIndex>
-          <ParameterName>year</ParameterName>
-        </CellDefinition>
-        <CellDefinition>
-          <ColumnIndex>1</ColumnIndex>
-          <RowIndex>0</RowIndex>
-          <ParameterName>month</ParameterName>
-        </CellDefinition>
-      </CellDefinitions>
-    </GridLayoutDefinition>
-  </ReportParametersLayout>
   <Language>en-US</Language>
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
