@@ -6274,7 +6274,7 @@ WHERE        (ContractMonthlyOutletSalesIn.Year = @year) AND (ContractMonthlyOut
         <Height>10.00917in</Height>
         <Style />
       </Body>
-      <Width>9.75004in</Width>
+      <Width>9.38546in</Width>
       <Page>
         <LeftMargin>1in</LeftMargin>
         <RightMargin>1in</RightMargin>
